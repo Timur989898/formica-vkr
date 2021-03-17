@@ -43,6 +43,12 @@ export default {
                     firebase.auth().signInWithPopup(provider)
                         .then((result) => {
                             commit('setProfile', result.user.providerData[0]);
+                            db.collection('users')
+                                .doc(result.user.providerData[0].uid)
+                                .set({ info: Object.assign({}, result.user.providerData[0]) })
+                                .then(() => {
+                                    console.log('user updated!')
+                                })
                             router.replace('/test');
                         }).catch((error) => {
                         console.log(error);

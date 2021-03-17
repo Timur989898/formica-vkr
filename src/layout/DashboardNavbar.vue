@@ -4,19 +4,22 @@
               :show-toggle-button="false"
               expand>
         <div class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-<!--            <div class="form-group mb-0">-->
-<!--                <base-input placeholder="Search"-->
-<!--                            class="input-group-alternative"-->
-<!--                            alternative=""-->
-<!--                            addon-right-icon="fas fa-search">-->
-<!--                </base-input>-->
-<!--            </div>-->
+            <router-link to="/create">
+                <base-button type="primary" icon="ni ni-user-run">Create target</base-button>
+            </router-link>
+            <!--            <div class="form-group mb-0">-->
+            <!--                <base-input placeholder="Search"-->
+            <!--                            class="input-group-alternative"-->
+            <!--                            alternative=""-->
+            <!--                            addon-right-icon="fas fa-search">-->
+            <!--                </base-input>-->
+            <!--            </div>-->
         </div>
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item dropdown">
                 <base-dropdown class="nav-link pr-0">
                     <div class="media align-items-center" slot="title">
-                <span class="avatar avatar-sm rounded-circle">
+                <span v-if="photo" class="avatar avatar-sm rounded-circle">
                   <img alt="Image placeholder" :src="photo">
                 </span>
                         <div class="media-body ml-2 d-none d-lg-block">
@@ -56,36 +59,36 @@
     </base-nav>
 </template>
 <script>
-  import {mapActions, mapGetters, mapState} from "vuex";
+    import {mapActions, mapGetters, mapState} from "vuex";
 
-  export default {
-    data() {
-      return {
-        activeNotifications: false,
-        showMenu: false,
-        searchQuery: ''
-      };
-    },
-    computed: {
-      ...mapState('auth', ['profile']),
-      ...mapGetters('auth', ['displayName']),
+    export default {
+        data() {
+            return {
+                activeNotifications: false,
+                showMenu: false,
+                searchQuery: ''
+            };
+        },
+        computed: {
+            ...mapState('auth', ['profile']),
+            ...mapGetters('auth', ['displayName']),
 
-      photo() {
-        return this.profile ? this.profile.photoURL : 'img/theme/team-4-800x800.jpg';
-      }
+            photo() {
+                return this.profile ? this.profile.photoURL : 'img/theme/team-4-800x800.jpg';
+            }
 
-    },
-    methods: {
-      ...mapActions('auth', ['logout']),
-      toggleSidebar() {
-        this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
-      },
-      hideSidebar() {
-        this.$sidebar.displaySidebar(false);
-      },
-      toggleMenu() {
-        this.showMenu = !this.showMenu;
-      }
-    }
-  };
+        },
+        methods: {
+            ...mapActions('auth', ['logout']),
+            toggleSidebar() {
+                this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
+            },
+            hideSidebar() {
+                this.$sidebar.displaySidebar(false);
+            },
+            toggleMenu() {
+                this.showMenu = !this.showMenu;
+            }
+        }
+    };
 </script>
