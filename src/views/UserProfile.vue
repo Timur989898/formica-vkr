@@ -16,7 +16,7 @@
             </div>
         </base-header>
 
-        <div v-if="profile" class="container-fluid mt--7">
+        <div v-if="profile && model && model.info" class="container-fluid mt--7">
             <div class="row">
                 <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
 
@@ -32,8 +32,8 @@
                         </div>
                         <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                             <div class="d-flex justify-content-between">
-                                <base-button size="sm" type="info" class="mr-4">Connect</base-button>
-                                <base-button size="sm" type="default" class="float-right">Message</base-button>
+                                <base-button size="sm" type="info" class="mr-4">Subscribe</base-button>
+                                <base-button size="sm" type="default" class="float-right">Challenge</base-button>
                             </div>
                         </div>
                         <div class="card-body pt-0 pt-md-4">
@@ -60,16 +60,35 @@
                                   {{ displayName }}<span class="font-weight-light"></span>
                                 </h3>
                                 <div class="h5 font-weight-300">
-                                    <i class="ni location_pin mr-2"></i>{{ profile.city ? `${profile.city}, ` : ''}}{{ profile.country }}
+                                    <i class="ni ni-pin-3 mr-2"></i>{{ profile.city ? `${profile.city}, ` : ''}}{{ profile.country }}
                                 </div>
-                                <div class="h5 mt-4">
-                                    <i class="ni business_briefcase-24 mr-2"></i>@{{ profile.username }}
+                                <div v-if="profile.username" class="h4">
+                                    <i class="ni business-briefcase-24 mr-2"></i>@{{ profile.username }}
+                                </div>
+                                <p v-if="profile.aboutMe">{{ profile.aboutMe }}</p>
+                                <hr class="my-4" />
+                                <base-progress class="progress-wrapper" type="primary" :height="8" :value="60" label="Level 5"></base-progress>
+<!--                                <div class="h4">-->
+<!--                                    Level: 4-->
+<!--                                </div>-->
+<!--                                <div class="progress">-->
+<!--                                    <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">60 / 100</div>-->
+<!--                                </div>-->
+                                <br />
+                                <div class="h4">
+                                    Place on the leaderboard: 5
+                                </div>
+                                <br />
+                                <div class="h4">
+                                    Achievements: 8
+                                </div>
+                                <br />
+                                <div class="h4">
+                                    Challenges: 2
                                 </div>
 <!--                                <div>-->
 <!--                                    <i class="ni education_hat mr-2"></i>University of Computer Science-->
 <!--                                </div>-->
-                                <hr class="my-4" />
-                                <p>{{ profile.aboutMe }}</p>
 <!--                                <a href="#">Show more</a>-->
                             </div>
                         </div>
@@ -231,7 +250,7 @@
       ...mapState('auth', ['profile']),
       ...mapGetters('auth', ['displayName']),
       helloText() {
-        return this.profile?.firstName ? `Hello, ${this.profile.firstName}!` : (this.profile?.name ? `Hello, ${this.profile.name}!` : 'Hello!');
+        return this.profile?.firstName ? `Hello, ${this.profile?.firstName}!` : (this.profile?.name ? `Hello, ${this.profile.name}!` : 'Hello!');
       }
     },
 
@@ -264,4 +283,8 @@
     },
   };
 </script>
-<style></style>
+<style scoped>
+    .progress-wrapper {
+        padding-top: 0;
+    }
+</style>

@@ -42,17 +42,17 @@
                                     v-model="model.password">
                         </base-input>
 
-                        <div class="text-muted font-italic">
-                            <small>password strength: <span class="text-success font-weight-700">strong</span></small>
-                        </div>
+<!--                        <div class="text-muted font-italic">-->
+<!--                            <small>password strength: <span class="text-success font-weight-700">strong</span></small>-->
+<!--                        </div>-->
 
-                        <div class="row my-4">
-                            <div class="col-12">
-                                <base-checkbox class="custom-control-alternative">
-                                    <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                                </base-checkbox>
-                            </div>
-                        </div>
+<!--                        <div class="row my-4">-->
+<!--                            <div class="col-12">-->
+<!--                                <base-checkbox class="custom-control-alternative">-->
+<!--                                    <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>-->
+<!--                                </base-checkbox>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="text-center">
                             <base-button type="primary" class="my-4" @click="submit">Create account</base-button>
                         </div>
@@ -62,7 +62,7 @@
             <div class="row mt-3">
                 <div class="col-6">
                     <a href="#" class="text-light">
-                        <small>Forgot password?</small>
+                        <small></small>
                     </a>
                 </div>
                 <div class="col-6 text-right">

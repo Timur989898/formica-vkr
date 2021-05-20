@@ -21,8 +21,8 @@ export default new Router({
           component: () => import(/* webpackChunkName: "demo" */ './views/Dashboard.vue')
         },
         {
-          path: '/icons',
-          name: 'icons',
+          path: '/achievements',
+          name: 'achievements',
           component: () => import(/* webpackChunkName: "demo" */ './views/Icons.vue')
         },
         {
@@ -54,6 +54,16 @@ export default new Router({
           path: '/tables',
           name: 'tables',
           component: () => import(/* webpackChunkName: "demo" */ './views/Tables.vue')
+        },
+        {
+          path: '/leaders',
+          name: 'leaders',
+          component: () => import(/* webpackChunkName: "demo" */ './views/Leaders.vue')
+        },
+        {
+          path: '/challenges',
+          name: 'challenges',
+          component: () => import(/* webpackChunkName: "challenges" */ './views/Challenges.vue')
         }
       ]
     },

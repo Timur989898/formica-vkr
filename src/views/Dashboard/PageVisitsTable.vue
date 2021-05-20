@@ -1,94 +1,97 @@
 <template>
-  <div class="card">
-    <div class="card-header border-0">
-      <div class="row align-items-center">
-        <div class="col">
-          <h3 class="mb-0">Page visits</h3>
+    <div class="card">
+        <div class="card-header border-0">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="mb-0">Last targets</h3>
+                </div>
+                <div class="col text-right">
+                    <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                </div>
+            </div>
         </div>
-        <div class="col text-right">
-          <a href="#!" class="btn btn-sm btn-primary">See all</a>
+
+        <div class="table-responsive">
+            <base-table thead-classes="thead-light"
+                        :data="tableData">
+                <template slot="columns">
+                    <th>Title</th>
+                    <th>category</th>
+                    <th>achieved</th>
+                    <th>Last month progress</th>
+                </template>
+
+                <template slot-scope="{row}">
+                    <th scope="row">
+                        {{row.title}}
+                    </th>
+                    <td>
+                        {{row.category}}
+                    </td>
+                    <td>
+                        {{row.achieved}}
+                    </td>
+                    <td>
+                        <i class="fas fa-arrow-up text-success mr-3"
+                           :class="row.bounceRateDirection === 'up' ? 'text-success': 'text-danger'">
+                        </i>
+                        {{row.progress}}
+                    </td>
+                </template>
+
+            </base-table>
         </div>
-      </div>
+
     </div>
-
-    <div class="table-responsive">
-      <base-table thead-classes="thead-light"
-                  :data="tableData">
-        <template slot="columns">
-          <th>Page name</th>
-          <th>Visitors</th>
-          <th>Unique users</th>
-          <th>Bounce rate</th>
-        </template>
-
-        <template slot-scope="{row}">
-          <th scope="row">
-            {{row.page}}
-          </th>
-          <td>
-            {{row.visitors}}
-          </td>
-          <td>
-            {{row.unique}}
-          </td>
-          <td>
-            <i class="fas fa-arrow-up text-success mr-3"
-               :class="row.bounceRateDirection === 'up' ? 'text-success': 'text-danger'">
-            </i>
-            {{row.bounceRate}}
-          </td>
-        </template>
-
-      </base-table>
-    </div>
-
-  </div>
 </template>
 <script>
-  export default {
-    name: 'page-visits-table',
-    data() {
-      return {
-        tableData: [
-          {
-            page: '/argon/',
-            visitors: '4,569',
-            unique: '340',
-            bounceRate: '46,53%',
-            bounceRateDirection: 'up'
-          },
-          {
-            page: '/argon/index.html',
-            visitors: '3,985',
-            unique: '319',
-            bounceRate: '46,53%',
-            bounceRateDirection: 'down'
-          },
-          {
-            page: '/argon/charts.html',
-            visitors: '3,513',
-            unique: '294',
-            bounceRate: '36,49%',
-            bounceRateDirection: 'down'
-          },
-          {
-            page: '/argon/tables.html',
-            visitors: '2,050',
-            unique: '147',
-            bounceRate: '50,87%',
-            bounceRateDirection: 'up'
-          },
-          {
-            page: '/argon/profile.html',
-            visitors: '1,795',
-            unique: '190',
-            bounceRate: '46,53%',
-            bounceRateDirection: 'down'
-          }
-        ]
-      }
+    export default {
+        name: 'page-visits-table',
+        data() {
+            return {
+                tableData: [
+                    {
+                        title: 'Run 250 km',
+                        category: 'Sport',
+                        achieved: '156',
+                        progress: '46,53%',
+                        bounceRateDirection: 'up'
+                    },
+                    {
+                        title: 'New English words',
+                        category: 'Education',
+                        achieved: '310',
+                        progress: '70,58%',
+                        bounceRateDirection: 'up'
+                    },
+                    {
+                        title: 'Meet 20 old friends',
+                        category: 'Communication',
+                        achieved: '18',
+                        progress: '20%',
+                        bounceRateDirection: 'down'
+                    },
+                    {
+                        title: 'Visit 10 different countries',
+                        category: 'Travel',
+                        achieved: '7',
+                        progress: '25%',
+                        bounceRateDirection: 'down'
+                    },
+                    {
+                        title: 'Participate in 5 flash mobs',
+                        category: 'Fun',
+                        achieved: '3',
+                        progress: '50%',
+                        bounceRateDirection: 'up'
+                    },
+                ]
+            }
+        }
     }
-  }
 </script>
 <style>
+    .text-danger {
+        transform: rotate(180deg);
+    }
 </style>

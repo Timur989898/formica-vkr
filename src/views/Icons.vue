@@ -1,79 +1,18 @@
 <template>
     <div>
-        <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
-            <!-- Card stats -->
-            <div class="row">
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
-                                type="gradient-red"
-                                sub-title="350,897"
-                                icon="ni ni-active-40"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
-                                type="gradient-orange"
-                                sub-title="2,356"
-                                icon="ni ni-chart-pie-35"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 12.18%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Sales"
-                                type="gradient-green"
-                                sub-title="924"
-                                icon="ni ni-money-coins"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-danger mr-2"><i class="fa fa-arrow-down"></i> 5.72%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
-
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Performance"
-                                type="gradient-info"
-                                sub-title="49,65%"
-                                icon="ni ni-chart-bar-32"
-                                class="mb-4 mb-xl-0"
-                    >
-
-                        <template slot="footer">
-                            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 54.8%</span>
-                            <span class="text-nowrap">Since last month</span>
-                        </template>
-                    </stats-card>
-                </div>
-            </div>
-        </base-header>
+        <HeaderCards />
 
         <div class="container-fluid mt--7">
             <div class="row">
                 <div class="col">
                     <div class="card shadow">
                         <div class="card-header bg-transparent">
-                            <h3 class="mb-0">Icons</h3>
+                            <h3 class="mb-0">Achievements</h3>
                         </div>
                         <div class="card-body">
                             <div class="row icon-examples">
-                                <div class="col-lg-3 col-md-6"
-                                     v-for="(icon, index) in icons" :key="icon.name + index">
+                                <div class="col-lg-6 col-md-12"
+                                     v-for="(icon, index) in achievements" :key="icon.name + index">
                                     <button type="button"
                                             v-b-tooltip.hover.top
                                             :title="icon.name"
@@ -82,7 +21,7 @@
                                             class="btn-icon-clipboard" data-clipboard-text="air-baloon">
                                         <div>
                                             <i :class="icon.name"></i>
-                                            <span>{{icon.name.substring(6)}}</span>
+                                            <span>{{icon.title}}</span>
                                         </div>
                                     </button>
                                 </div>
@@ -99,13 +38,28 @@
   import Vue from 'vue'
   import VueClipboard from 'vue-clipboard2'
   import BTooltipDirective from 'bootstrap-vue/esm/directives/tooltip'
+  import HeaderCards from "@/components/Custom/HeaderCards";
   Vue.use(VueClipboard)
   export default {
-    directives: {
+      components: {HeaderCards},
+      directives: {
       'b-tooltip': BTooltipDirective
     },
     data() {
       return {
+      achievements: [
+          {
+              name: "ni ni-air-baloon",
+              title: 'People can fly too! - ride in a balloon'
+          },
+          { name: "ni ni-palette",title: 'Art is not for everyone - draw the first picture' },
+          { name: "ni ni-atom",title: 'It\'s never too late! - learn new technology' },
+          { name: "ni ni-world", title: 'Heads and tails - visit 10 countries'},
+          { name: "ni ni-building", title: 'Bird\'s-eye - сlimb the roof of a skyscraper' },
+          { name: "ni ni-map-big", title: 'Cozy evenings - go camping' },
+          { name: "ni ni-note-03", title: 'Pop star! - record first song' },
+          { name: "ni ni-favourite-28", title: 'Big heart - do charity work' },
+      ],
         icons: [
           { name: "ni ni-active-40" },
           { name: "ni ni-air-baloon" },
