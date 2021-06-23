@@ -135,9 +135,29 @@
                     .then(() => {
                         console.log('target added!')
                     })
+            },
+            async displayNotification() {
+              if (Notification.permission === 'granted') {
+                new Notification("Alex challenged you!", {
+                  body: 'Ride a bike for 30km, join us!',
+                  "icon": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/561dc284777281.5d6786a598502.png",
+                });
+                new Notification("Don't forget to go to the gym!", {
+                  body: 'You\'ll get an extra 30 points for going to the gym today, don\'t miss the opportunity!',
+                  "icon": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/561dc284777281.5d6786a598502.png",
+                });
+                new Notification("WOW! New level 6!", {
+                  body: 'Look for the new badge in your achievements!',
+                  "icon": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/561dc284777281.5d6786a598502.png",
+                });
+              }
             }
         },
         async created() {
+            await Notification.requestPermission(function (status) {
+              console.log('Notification permission status:', status);
+            });
+            await this.displayNotification();
             try {
                 const dbCategories = await db.collection('categories').get();
                 const dbRegularities = await db.collection('regularity').get();
