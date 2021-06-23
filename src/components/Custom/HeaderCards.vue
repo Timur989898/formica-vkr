@@ -5,7 +5,7 @@
       <div class="col-xl-3 col-lg-6">
         <stats-card title="Total targets"
                     type="gradient-red"
-                    :sub-title="myTargets.length"
+                    :sub-title="12"
                     icon="ni ni-active-40"
                     class="mb-4 mb-xl-0"
         />
@@ -13,7 +13,7 @@
       <div class="col-xl-3 col-lg-6">
         <stats-card title="Active targets"
                     type="gradient-orange"
-                    :sub-title="myTargets.length"
+                    :sub-title="6"
                     icon="ni ni-chart-pie-35"
                     class="mb-4 mb-xl-0"
         />
